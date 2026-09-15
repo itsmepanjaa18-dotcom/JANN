@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise 💗</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="stars"></div>
+
+<!-- 1. OPENING -->
+<section class="screen active" id="welcome">
+  <div class="sparkles">✦ ✧ ✦</div>
+  <div class="welcome-card">
+    <div class="tiny-label">A LITTLE SOMETHING FOR YOU</div>
+    <div class="envelope">💌</div>
+    <h1>Hey, you...</h1>
+    <p>I made something special.<br>But you have to promise to follow the little journey.</p>
+    <button onclick="go('password')">I'm curious 👀</button>
+  </div>
+</section>
+
+<!-- 2. PASSWORD -->
+<section class="screen" id="password">
+  <div class="lock">🔐</div>
+  <div class="glass">
+    <div class="tiny-label">SECRET ENTRY</div>
+    <h2>Only one person can enter...</h2>
+    <p class="muted">Hint: something only you would know 💭</p>
+    <input id="pass" type="password" placeholder="Enter the secret..." autocomplete="off">
+    <button onclick="checkPassword()">Unlock the surprise ✨</button>
+    <p id="passMsg"></p>
+    <button class="ghost" onclick="skipPassword()">I know nothing 😭</button>
+  </div>
+</section>
+
+<!-- 3. SUSPENSE -->
+<section class="screen" id="suspense">
+  <div class="loader-heart">♡</div>
+  <div class="glass">
+    <div class="tiny-label">ACCESS GRANTED</div>
+    <h2>Okay... you're in. 💗</h2>
+    <p>But the surprise isn't ready yet.</p>
+    <div class="count" id="count">3</div>
+    <p class="muted">Get ready...</p>
+  </div>
+</section>
+
+<!-- 4. DARK ROOM -->
+<section class="screen dark-room" id="darkRoom">
+  <div class="moon"></div>
+  <div class="room-stars"></div>
+  <div class="corner c1">🎁</div>
+  <div class="corner c2">🐈‍⬛</div>
+  <div class="corner c3">🎂</div>
+  <div class="dark-content">
+    <div class="tiny-label">SHHH... 🤫</div>
+    <h2>The room is dark.</h2>
+    <p>Someone is waiting for you.</p>
+    <button onclick="go('photoRoom')">Turn on the lights 💡</button>
+  </div>
+</section>
+
+<!-- 5. PHOTO REVEAL -->
+<section class="screen photo-room" id="photoRoom">
+  <div class="bulbs"><span>💡</span><span>💡</span><span>💡</span><span>💡</span><span>💡</span></div>
+  <div class="photo-overlay"></div>
+  <div class="hero-card">
+    <div class="tiny-label">✦ CELEBRATION MODE ✦</div>
+    <h1>Happy Birthday<br><span>My Favorite Person</span> 🎉</h1>
+    <p>A tiny celebration page made with lots of love.</p>
+    <button onclick="go('decorRoom')">Decorate the room 🎈</button>
+  </div>
+</section>
+
+<!-- 6. DECOR -->
+<section class="screen dark-room" id="decorRoom">
+  <div class="floating f1">🎀</div><div class="floating f2">🎁</div><div class="floating f3">🐈</div>
+  <div class="glass">
+    <div class="tiny-label">STEP 01</div>
+    <h2>Let's make it pretty. ✨</h2>
+    <p>The room needs a little birthday magic.</p>
+    <div class="decor-line">🎈 &nbsp; ✨ &nbsp; 🎀 &nbsp; ✨ &nbsp; 🎈</div>
+    <button onclick="go('balloonRoom')">Release the balloons 🎈</button>
+  </div>
+</section>
+
+<!-- 7. BALLOONS -->
+<section class="screen dark-room balloon-screen" id="balloonRoom">
+  <div class="balloon b1">🎈</div><div class="balloon b2">🎈</div>
+  <div class="balloon b3">🎈</div><div class="balloon b4">🎈</div>
+  <div class="glass">
+    <div class="tiny-label">STEP 02</div>
+    <h2>Look at them go! 🎈</h2>
+    <p>Now there's only one thing missing...</p>
+    <button onclick="go('cakeRoom')">Bring the cake 🎂</button>
+  </div>
+</section>
+
+<!-- 8. CAKE -->
+<section class="screen dark-room" id="cakeRoom">
+  <div class="glass cake-card">
+    <div class="tiny-label">STEP 03</div>
+    <h2>Make a birthday wish. 🎂</h2>
+    <div class="cake" onclick="cutCake()">
+      <div class="candle"><i></i></div>
+      <div class="icing"></div>
+      <div class="cake-body"></div>
+    </div>
+    <p id="cakeText">Click the cake 5 times to cut it ✨</p>
+    <div class="progress"><div id="cakeProgress"></div></div>
+    <button id="wishBtn" class="hidden" onclick="go('wishesRoom')">I made my wish 💗</button>
+  </div>
+</section>
+
+<!-- 9. WISHES -->
+<section class="screen dark-room" id="wishesRoom">
+  <div class="glass wishes">
+    <div class="tiny-label">STEP 04</div>
+    <h2>A few wishes for you 💌</h2>
+    <p class="muted">Tap each card.</p>
+    <div class="cards">
+      <div class="flip" onclick="this.classList.toggle('flipped')">
+        <div class="front">Wish #1 ✨</div>
+        <div class="back">May your day be filled with laughter, love, and little moments that become unforgettable memories.</div>
+      </div>
+      <div class="flip" onclick="this.classList.toggle('flipped')">
+        <div class="front">Wish #2 🌷</div>
+        <div class="back">I hope this year brings calm, confidence, beautiful surprises, and people who cheer for you loudly.</div>
+      </div>
+      <div class="flip" onclick="this.classList.toggle('flipped')">
+        <div class="front">Wish #3 💗</div>
+        <div class="back">You deserve joy that feels easy, memories that stay warm, and a year that treats you gently.</div>
+      </div>
+    </div>
+    <button onclick="startMemories()">Open our memories 📸</button>
+  </div>
+</section>
+
+<!-- 10. MEMORIES -->
+<section class="screen dark-room" id="memoriesRoom">
+  <div class="glass memories-wrap">
+
+    <div class="tiny-label">STEP 05</div>
+
+    <h2>Our Memories 📸</h2>
+
+    <p class="muted">
+      A little collection of moments worth keeping forever.
+    </p>
+
+    <div class="memory-grid">
+
+      <div class="memory">
+        <img src="assets/memories/memory1.jpg" alt="Our Memory 1">
+        <span>One special memory 💗</span>
+      </div>
+
+      <div class="memory">
+        <img src="assets/memories/memory2.jpg" alt="Our Memory 2">
+        <span>Another beautiful memory 💕</span>
+      </div>
+
+      <div class="memory">
+        <img src="assets/memories/memory3.jpg" alt="Our Memory 3">
+        <span>A moment to remember forever ✨</span>
+      </div>
+
+    </div>
+
+    <button onclick="go('letterRoom')">
+      And finally... 💌
+    </button>
+
+  </div>
+</section>
+<!-- 11. LETTER -->
+
+<!-- 11. FINAL LETTER -->
+<section class="screen dark-room" id="letterRoom">
+  <div class="letter">
+
+    <div class="tiny-label">FINAL MESSAGE</div>
+
+    <h2>Happy Birthday, Praneetha ❤️</h2>
+
+    <p>
+      A small letter for you… 🫂
+    </p>
+
+    <p>
+      When I saw you for the first time, I knew you, but we never really
+      talked to each other. Then Sravya made a connection between us, and
+      slowly, I started loving and enjoying this journey with you. ❤️
+    </p>
+
+    <p>
+      Honestly, I don't even know why, but I always wanted you to be my best
+      friend… and somehow, you became someone much more special to me. 🥹💗
+    </p>
+
+    <p>
+      Even when I was at my lowest, you stayed with me so strongly, especially
+      during my past. 🙌 Thank you so much for that.
+      Naku aa time lo em cheyalo kuda teliyadhu, but you showed me the way,
+      guided me, and stayed beside me when I needed someone the most. 🫂❤️
+    </p>
+
+    <p>
+      I have made fun of you so many times using the names of others 😂😚.
+      It was always fun teasing you and spending those moments with you…
+      but please, don't ever repeat the same with me! 😁🙌😂
+    </p>
+
+    <p>
+      Finally, wishing you a very, very Happy Birthday, ra! 🎂❤️
+    </p>
+
+    <p>
+      I hope you always stay happy, keep smiling, and get everything you
+      deserve. And whatever happens, I'll always be grateful for the
+      beautiful journey we started together. 🫂💗
+    </p>
+
+    <p class="signature">
+      From your Siva ❤️
+    </p>
+
+    <button onclick="restart()">
+      Replay the surprise ↻
+    </button>
+
+  </div>
+</section>
+
+<audio id="birthdaySong" preload="auto" loop playsinline></audio>
+<script src="script.js"></script>
+</body>
+</html>
